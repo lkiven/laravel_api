@@ -14,9 +14,9 @@ class ResponseEnum
     */
 
     // 200表示服务器成功地接受了客户端请求
-    const HTTP_OK = [200001, '操作成功'];
-    const HTTP_ERROR = [200002, '操作失败'];
-    const HTTP_ACTION_COUNT_ERROR = [200302, '操作频繁'];
+    const HTTP_OK = [200001, '请求成功'];
+    const HTTP_ERROR = [200002, '请求失败'];
+    const HTTP_ACTION_COUNT_ERROR = [200302, '请求频繁...'];
     const USER_SERVICE_LOGIN_SUCCESS = [200200, '登录成功'];
     const USER_SERVICE_LOGIN_ERROR = [200201, '登录失败'];
     const USER_SERVICE_LOGOUT_SUCCESS = [200202, '退出登录成功'];
