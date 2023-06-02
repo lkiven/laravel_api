@@ -41,9 +41,16 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        //系统错误日志
         'system' => [
             'driver' => 'daily',
             'path' => storage_path('logs/system_error.log'),
+        ],
+
+        //监听SQL日志
+        'sql_listen' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/sql_listen.log'),
         ],
 
         'single' => [
