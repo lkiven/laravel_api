@@ -41,6 +41,11 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'system' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/system_error.log'),
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
