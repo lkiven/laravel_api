@@ -14,7 +14,15 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'App\Http\Controllers\API';
+
+    /**
+     * The path to the "home" route for your application.
+     *
+     * @var string
+     */
+    public const HOME = '/';
+
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -23,8 +31,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -36,10 +42,9 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+        //注销web路由
+        //$this->mapWebRoutes();
 
-        $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -66,8 +71,13 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->name('api.')
+            ->group(function () {
+                foreach (glob(base_path('routes') . '/api/*.php') as $file) { //加载api下面的所有php文件
+                    require $file;
+                }
+            });
     }
 }
