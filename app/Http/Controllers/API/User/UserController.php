@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\API\User;
+namespace App\Http\Controllers\Api\User;
 
-use App\Http\Controllers\API\BaseController;
+use App\Http\Controllers\Api\BaseController;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +17,7 @@ class UserController extends BaseController
         $params = $userRequest->all();
         //验证表单
         $userRequest->validate('register');
+
     }
 
     /**用户列表
