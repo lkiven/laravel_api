@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="54672c0d-ac15-4bc5-ba62-d6666c4283fb" name="api">
+        <fileTransfer rootFolder="/www/wwwroot/api.lkwxyh.cn/laravel_api" accessType="SFTP" host="117.78.3.84" port="22" sshConfigId="b341b9cd-4000-4405-83a7-6845e59313d8" sshConfig="root@117.78.3.84:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
