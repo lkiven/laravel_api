@@ -14,7 +14,9 @@
         "guzzlehttp/guzzle": "^7.7",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "overtrue/laravel-lang": "~3.0"
+        "overtrue/laravel-lang": "~3.0",
+        "tymon/jwt-auth": "^1.0",
+        "zhuzhichao/ip-location-zh": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "2.8.*",
