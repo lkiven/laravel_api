@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         //注销web路由
-        //$this->mapWebRoutes();
+        $this->mapWebRoutes();
 
     }
 
