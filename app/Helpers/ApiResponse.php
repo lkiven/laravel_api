@@ -3,6 +3,7 @@
 
 namespace App\Helpers;
 
+use App\Enums\CommonEnum;
 use App\Enums\ResponseEnum;
 use App\Exceptions\BusinessException;
 use Illuminate\Http\JsonResponse;
@@ -54,6 +55,27 @@ trait ApiResponse
         ]);
     }
 
+    /**自定义逻辑验证不通过
+     * @param $errorMessage
+     * @param $errorCode
+     * @param $data
+     * @param $error
+     * @return
+     */
+    public function error($errorMessage=null,$errorCode=null,$data=null,$error=null)
+    {
+        $errorMessage = $errorMessage ?? CommonEnum::CUSTOM_ERROR_MESSAGE;
+        $errorCode = $errorCode ?? CommonEnum::CUSTOM_ERROR_CODE;
+
+        echo json_encode([
+                'status' => 'error',
+                'code' => $errorCode,
+                'message' => $errorMessage,
+                'data' => $data,
+                'error' => $error,
+            ],JSON_UNESCAPED_UNICODE);
+        die;
+    }
 
     /**
      * 成功分页返回
