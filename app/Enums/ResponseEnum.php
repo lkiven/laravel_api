@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-class ResponseEnum
+class ResponseEnum extends CommonEnum
 {
     //为了线上错误信息不被返回（屏蔽错误信息）
     const SYSTEM_GLOBAL_ERROR = [500,'服务器内部错误'];
@@ -66,5 +66,18 @@ class ResponseEnum
     const SERVICE_LOGIN_ERROR = [500102, '登录失败'];
     const SERVICE_LOGIN_ACCOUNT_ERROR = [500103, '账号或密码错误'];
     const SERVICE_USER_INTEGRAL_ERROR = [500200, '积分不足'];
+
+
+
+    //token验证错误
+    const JWT_TOKEN_NOT_USER_ERROR = [600100,'无此用户'];
+    const JWT_TOKEN_EXPIRED_ERROR = [600102,'token 已过期'];
+    const JWT_TOKEN_INVALID_ERROR = [600103,'token 无效'];
+    const JWT_TOKEN_NONE_ERROR = [600104,'缺少token'];
+    const JWT_TOKEN_BLACK_ERROR = [600105,'token被拉入黑名单'];
+
+
+
+
 
 }
