@@ -11,7 +11,19 @@
 |
 */
 
+//登录注册不需要jwt中间值
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
-        Route::any('register', 'UserController@register')->name('register');
-        Route::any('/', 'UserController@index')->name('index');
+    Route::post('register', 'UserController@register')->name('register'); //用户注册
+    Route::post('login', 'UserController@login')->name('login'); //用户登录
+});
+
+
+//个人中心需要jwt验证中间件
+Route::namespace('User')->middleware(['jwt.auth.api'])->prefix('user')->name('user.')->group(function () {
+    Route::get('getInfo', 'UserController@getInfo')->name('getInfo');//个人中心
+    Route::post('loginOut', 'UserController@loginOut')->name('loginOut');//退出登录
+});
+
+
+
 });
