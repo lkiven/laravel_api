@@ -33,7 +33,7 @@ trait SceneValidator
     /**
      * 复制 ValidatesWhenResolvedTrait -> validateResolved 自动验证
      */
-    protected function handleValidate($allErrorMessage = false)
+    protected function handleValidate($errorCode= false ,$allErrorMessage = false)
     {
         $this->prepareForValidation();
 
@@ -56,7 +56,7 @@ trait SceneValidator
                 $errorMessage = $instance->errors()->first();
             }
             //默认返回第一条错误
-            $this->throwBusinessException(ResponseEnum::CLIENT_PARAMETER_ERROR,$errorMessage);
+            $this->throwBusinessException($errorCode,$errorMessage);
         }
     }
 
@@ -74,10 +74,11 @@ trait SceneValidator
 
     /**验证方法（关闭自动验证时控制器调用）
      * @param string $scene 场景名称 或 验证规则
+     * @param string $errorCode 错误码
      * @param int $allErrorMessage  是否显示全部错误信息
      * @return void
      */
-    public function validate($scene='',$allErrorMessage=false)
+    public function validate($scene='',$errorCode = null,$allErrorMessage=null)
     {
         if(!$this->autoValidate){
             if(is_array($scene)){
@@ -85,7 +86,8 @@ trait SceneValidator
             }else{
                 $this->scene = $scene;
             }
-            $this->handleValidate($allErrorMessage);
+            $errorCode = $errorCode ?? ResponseEnum::CLIENT_PARAMETER_ERROR;
+            $this->handleValidate($errorCode,$allErrorMessage);
         }
     }
 
