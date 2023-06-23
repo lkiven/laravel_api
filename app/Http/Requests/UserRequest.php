@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Requests;
+
+use App\Models\User;
 use App\Requests\FormRequest;
 
 class UserRequest extends FormRequest
@@ -13,8 +15,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'account' => 'required|string',
+            'username' => 'required|string|min:3|max:32',
             'password' => 'required|string|min:6|max:16|alpha_dash',
+            'sex'      => 'required',
         ];
     }
 
@@ -26,11 +29,18 @@ class UserRequest extends FormRequest
         return [
             //注册
             'register' => [
-                'account'=>'required|unique:users', //可以重置规则
+                'username' => 'required|unique:users|string|min:3|max:32', //可以重置规则
+                'password',
+                'sex'      => 'required|in:' . User::SEX_WOMAN . ',' . User::SEX_MAN . ',' . User::SEX_HIDDEN
+            ],
+            //登录
+            'login'    => [
+                'username',
                 'password',
             ],
+
             //修改密码
-            'update' => [
+            'update'   => [
                 'password'
             ],
         ];
@@ -44,9 +54,10 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'account.required' => '账号不能为空',
-            'password.required'  => '密码不能为空',
-            'password.alpha_dash'  => '密码只能是：字母和数字，以及破折号和下划线',
+            'username.required'   => '用户名不能为空',
+            'password.required'   => '密码不能为空',
+            'password.alpha_dash' => '密码只能是：字母和数字，以及破折号和下划线',
+            'sex.required'        => '性别不能为空',
         ];
     }
 
