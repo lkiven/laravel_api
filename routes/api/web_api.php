@@ -26,4 +26,6 @@ Route::namespace('User')->middleware(['jwt.auth.api'])->prefix('user')->name('us
 
 
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::any('/', 'AdminController@index')->name('index');
 });
