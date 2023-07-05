@@ -11,10 +11,15 @@
 |
 */
 
+
+
+
+
 //登录注册不需要jwt中间值
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Route::post('register', 'UserController@register')->name('register'); //用户注册
     Route::post('login', 'UserController@login')->name('login'); //用户登录
+    Route::get('verifyCode', 'CaptchaController@generateVerifyCode')->name('verifyCode'); //验证码
 });
 
 

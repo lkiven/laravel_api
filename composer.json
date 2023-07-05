@@ -12,8 +12,10 @@
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.7",
+        "itbdw/ip-database": "3.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "mews/captcha": "^3.3",
         "overtrue/laravel-lang": "~3.0",
         "tymon/jwt-auth": "^1.0",
         "zhuzhichao/ip-location-zh": "^2.4"
